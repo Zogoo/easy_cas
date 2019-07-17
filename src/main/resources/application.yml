@@ -1,0 +1,16 @@
+## Server Properties
+server:
+  port: 8086
+
+spring:
+  profiles.active: development
+  ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/cas
+    username: postgres
+    password: admin
+  ## Jackson Properties
+  jackson:
+    serialization.WRITE_DATES_AS_TIMESTAMPS: false
+    time-zone: UTC

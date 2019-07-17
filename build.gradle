@@ -1,0 +1,96 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'java'
+	id 'org.flywaydb.flyway' version '5.2.4'
+	id 'nu.studer.jooq' version '3.0.3'
+}
+
+// apply plugin: 'io.spring.dependency-management'
+// apply plugin: 'nu.studer.jooq'
+// apply plugin: 'org.flywaydb.flyway'
+
+group = 'com.cas'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '12'
+
+repositories {
+	mavenCentral()
+	jcenter()
+}
+ext {
+	databaseHost = "localhost"
+	databasePort = 5432
+	databaseName = "cas"
+	databaseUser = "postgres"
+	databasePassword = "admin"
+	databaseUrl = "jdbc:postgresql://${databaseHost}:${databasePort}/${databaseName}"
+}
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jooq'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.2'
+	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.9'
+	implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.6'
+	runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.2.6'
+	jooqRuntime group: 'org.postgresql', name: 'postgresql', version: '42.2.6'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+// Configurations for SQL migrations tool : Flyway
+// notice : FlyWay will migrate to the reaching database some sql files
+// present in src/main/resources/db/migration
+// and with names : V<number>__<Crud operation>_<file name>.sql
+flyway {
+	url = databaseUrl
+	user = databaseUser
+	password = databasePassword
+}
+
+// Configurations for Jooq framework to generate Java classes for dynamical SQL object queries building
+jooq {
+	version = '3.11.11'
+	edition = 'OSS'
+	tables(sourceSets.main) {
+		jdbc {
+			driver = 'org.postgresql.Driver'
+			url = databaseUrl
+			user = databaseUser
+			password = databasePassword
+			schema = 'public'
+		}
+		generator {
+			name = 'org.jooq.util.DefaultGenerator'
+			strategy {
+				name = 'org.jooq.util.DefaultGeneratorStrategy'
+			}
+			database {
+				name = 'org.jooq.util.postgres.PostgresDatabase'
+				inputSchema = 'public'
+				includes = '.*'
+                excludes = ''
+			}
+			generate {
+				relations = true
+				deprecated = true
+				records = true
+				immutablePojos = false
+				fluentSetters = true
+			}
+			target {
+				packageName = 'com.cas.easycas.dao'
+				directory = 'src/main/generated/java'
+			}
+		}
+	}
+}
+
+jar {
+	archiveName = 'cas.jar'
+}
+
+generateTablesJooqSchemaSource.dependsOn flywayMigrate
+test.dependsOn flywayClean
