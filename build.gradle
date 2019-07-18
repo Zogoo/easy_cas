@@ -1,13 +1,11 @@
 plugins {
 	id 'org.springframework.boot' version '2.1.6.RELEASE'
 	id 'java'
-	id 'org.flywaydb.flyway' version '5.2.4'
+	id 'org.flywaydb.flyway' version '5.2.4' apply false
 	id 'nu.studer.jooq' version '3.0.3'
 }
 
-// apply plugin: 'io.spring.dependency-management'
-// apply plugin: 'nu.studer.jooq'
-// apply plugin: 'org.flywaydb.flyway'
+apply plugin: 'io.spring.dependency-management'
 
 group = 'com.cas'
 version = '0.0.1-SNAPSHOT'
@@ -44,11 +42,11 @@ dependencies {
 // notice : FlyWay will migrate to the reaching database some sql files
 // present in src/main/resources/db/migration
 // and with names : V<number>__<Crud operation>_<file name>.sql
-flyway {
-	url = databaseUrl
-	user = databaseUser
-	password = databasePassword
-}
+// flyway {
+// 	url = databaseUrl
+// 	user = databaseUser
+// 	password = databasePassword
+// }
 
 // Configurations for Jooq framework to generate Java classes for dynamical SQL object queries building
 jooq {
@@ -60,15 +58,10 @@ jooq {
 			url = databaseUrl
 			user = databaseUser
 			password = databasePassword
-			schema = 'public'
 		}
 		generator {
-			name = 'org.jooq.util.DefaultGenerator'
-			strategy {
-				name = 'org.jooq.util.DefaultGeneratorStrategy'
-			}
 			database {
-				name = 'org.jooq.util.postgres.PostgresDatabase'
+				name = 'org.jooq.meta.postgres.PostgresDatabase'
 				inputSchema = 'public'
 				includes = '.*'
                 excludes = ''
@@ -92,5 +85,5 @@ jar {
 	archiveName = 'cas.jar'
 }
 
-generateTablesJooqSchemaSource.dependsOn flywayMigrate
-test.dependsOn flywayClean
+// generateTablesJooqSchemaSource.dependsOn flywayMigrate
+// test.dependsOn flywayClean
