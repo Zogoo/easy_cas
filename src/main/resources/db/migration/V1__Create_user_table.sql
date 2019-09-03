@@ -120,5 +120,6 @@ create table auth_info (
 );
 
 create table login_ip (
-
+    id serial PRIMARY KEY,
+    company_id bigint NOT NULL
 );
