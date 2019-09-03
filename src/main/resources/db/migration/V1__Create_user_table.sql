@@ -1,11 +1,11 @@
-create table user (
+CREATE TABLE users (
     id serial PRIMARY KEY,
     company_id bigint NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
-create table auth_chain (
+CREATE TABLE auth_chain (
     id serial PRIMARY KEY,
     user_id bigint NOT NULL,
     auth_type character varying NOT NULL,
@@ -14,24 +14,7 @@ create table auth_chain (
     updated_at timestamp without time zone NOT NULL
 );
 
-create table password_rule (
-    id serial PRIMARY KEY,
-    chain_id bigint NOT NULL REFERENCES auth_chain(id),
-    auth_info_id bigint NOT NULL REFERENCES auth_info(id),
-    allowed_retry_count integer DEFAULT 0 NOT NULL,
-    failed_attempts integer DEFAULT 0 NOT NULL,
-    sign_in_count integer DEFAULT 0 NOT NULL,
-    password_salt character varying,
-    email character varying DEFAULT ''::character varying NOT NULL,
-    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
-    confirmation_token character varying,
-    confirmed_at timestamp without time zone,
-    confirmation_sent_at timestamp without time zone,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-create table otp_rule (
+CREATE TABLE otp_rule (
     id serial PRIMARY KEY,
     chain_id bigint NOT NULL REFERENCES auth_chain(id),
     allowed_retry_count integer NOT NULL,
@@ -39,7 +22,7 @@ create table otp_rule (
     updated_at timestamp without time zone NOT NULL
 );
 
-create table duo_rule (
+CREATE TABLE duo_rule (
     id serial PRIMARY KEY,
     chain_id bigint NOT NULL REFERENCES auth_chain(id),
     allowed_retry_count integer NOT NULL,
@@ -47,21 +30,21 @@ create table duo_rule (
     updated_at timestamp without time zone NOT NULL
 );
 
-create table saml_rule (
+CREATE TABLE saml_rule (
     id serial PRIMARY KEY,
     chain_id bigint NOT NULL REFERENCES auth_chain(id),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
-create table ad_rule (
+CREATE TABLE ad_rule (
     id serial PRIMARY KEY,
     chain_id bigint NOT NULL REFERENCES auth_chain(id),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
-create table ip_rule (
+CREATE TABLE ip_rule (
     id serial PRIMARY KEY,
     chain_id bigint NOT NULL REFERENCES auth_chain(id),
     address character varying NOT NULL,
@@ -69,29 +52,21 @@ create table ip_rule (
     updated_at timestamp without time zone NOT NULL
 );
 
-create table devise_rule (
+CREATE TABLE devise_rule (
     id serial PRIMARY KEY,
     chain_id bigint NOT NULL REFERENCES auth_chain(id),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
-create table fido_rule (
+CREATE TABLE fido_rule (
     id serial PRIMARY KEY,
     chain_id bigint NOT NULL REFERENCES auth_chain(id),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
-create table client_certificate_rule (
-    id serial PRIMARY KEY,
-    chain_id bigint NOT NULL REFERENCES auth_chain(id),
-    root_certificate_id bigint NOT NULL REFERENCES root_certificate(id),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-create table root_certificate (
+CREATE TABLE root_certificate (
     id serial PRIMARY KEY,
     company_id bigint NOT NULL,
     name character varying,
@@ -109,7 +84,7 @@ create table root_certificate (
     updated_at timestamp without time zone NOT NULL
 );
 
-create table auth_info (
+CREATE TABLE auth_info (
     id serial PRIMARY KEY,
     last_sign_in_at timestamp without time zone,
     last_sign_in_ip inet,
@@ -119,7 +94,32 @@ create table auth_info (
     updated_at timestamp without time zone NOT NULL
 );
 
-create table login_ip (
+CREATE TABLE login_ip (
     id serial PRIMARY KEY,
     company_id bigint NOT NULL
+);
+
+CREATE TABLE client_certificate_rule (
+    id serial PRIMARY KEY,
+    chain_id bigint NOT NULL REFERENCES auth_chain(id),
+    root_certificate_id bigint NOT NULL REFERENCES root_certificate(id),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+CREATE TABLE password_rule (
+    id serial PRIMARY KEY,
+    chain_id bigint NOT NULL REFERENCES auth_chain(id),
+    auth_info_id bigint NOT NULL REFERENCES auth_info(id),
+    allowed_retry_count integer DEFAULT 0 NOT NULL,
+    failed_attempts integer DEFAULT 0 NOT NULL,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    password_salt character varying,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    confirmation_token character varying,
+    confirmed_at timestamp without time zone,
+    confirmation_sent_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
