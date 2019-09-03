@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'org.springframework.boot' version '2.1.7.RELEASE'
 	id 'java'
 	id 'org.flywaydb.flyway' version '6.0.1'
 	id 'nu.studer.jooq' version '3.0.3'
@@ -50,7 +50,7 @@ dependencies {
 
 // Configurations for Jooq framework to generate Java classes for dynamical SQL object queries building
 jooq {
-	version = '3.11.11'
+	version = '3.12.1'
 	edition = 'OSS'
 	tables(sourceSets.main) {
 		jdbc {
