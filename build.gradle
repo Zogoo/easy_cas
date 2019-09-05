@@ -26,8 +26,11 @@ ext {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.security:spring-security-oauth2-client'
-	implementation 'org.springframework.security:spring-security-oauth2-jose'
+	implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.6.RELEASE'
+	implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.6.RELEASE'
+	implementation group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.10.RELEASE'
+	implementation group: 'org.springframework.security', name: 'spring-security-oauth2-core'
+	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8'
 	implementation 'org.springframework.boot:spring-boot-starter-freemarker'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-jooq'
@@ -78,7 +81,7 @@ jooq {
 			}
 			target {
 				packageName = 'com.cas.easycas.dao'
-				directory = 'src/main/generated/java'
+				directory = 'src/main/java'
 			}
 		}
 	}

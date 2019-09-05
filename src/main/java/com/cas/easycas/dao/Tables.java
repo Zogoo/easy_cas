@@ -8,12 +8,19 @@ import com.cas.easycas.dao.tables.AdRule;
 import com.cas.easycas.dao.tables.AuthChain;
 import com.cas.easycas.dao.tables.AuthInfo;
 import com.cas.easycas.dao.tables.ClientCertificateRule;
+import com.cas.easycas.dao.tables.Clientdetails;
 import com.cas.easycas.dao.tables.DeviseRule;
 import com.cas.easycas.dao.tables.DuoRule;
 import com.cas.easycas.dao.tables.FidoRule;
 import com.cas.easycas.dao.tables.FlywaySchemaHistory;
 import com.cas.easycas.dao.tables.IpRule;
 import com.cas.easycas.dao.tables.LoginIp;
+import com.cas.easycas.dao.tables.OauthAccessToken;
+import com.cas.easycas.dao.tables.OauthApprovals;
+import com.cas.easycas.dao.tables.OauthClientDetails;
+import com.cas.easycas.dao.tables.OauthClientToken;
+import com.cas.easycas.dao.tables.OauthCode;
+import com.cas.easycas.dao.tables.OauthRefreshToken;
 import com.cas.easycas.dao.tables.OtpRule;
 import com.cas.easycas.dao.tables.PasswordRule;
 import com.cas.easycas.dao.tables.RootCertificate;
@@ -57,6 +64,11 @@ public class Tables {
     public static final ClientCertificateRule CLIENT_CERTIFICATE_RULE = com.cas.easycas.dao.tables.ClientCertificateRule.CLIENT_CERTIFICATE_RULE;
 
     /**
+     * The table <code>public.clientdetails</code>.
+     */
+    public static final Clientdetails CLIENTDETAILS = com.cas.easycas.dao.tables.Clientdetails.CLIENTDETAILS;
+
+    /**
      * The table <code>public.devise_rule</code>.
      */
     public static final DeviseRule DEVISE_RULE = com.cas.easycas.dao.tables.DeviseRule.DEVISE_RULE;
@@ -85,6 +97,36 @@ public class Tables {
      * The table <code>public.login_ip</code>.
      */
     public static final LoginIp LOGIN_IP = com.cas.easycas.dao.tables.LoginIp.LOGIN_IP;
+
+    /**
+     * The table <code>public.oauth_access_token</code>.
+     */
+    public static final OauthAccessToken OAUTH_ACCESS_TOKEN = com.cas.easycas.dao.tables.OauthAccessToken.OAUTH_ACCESS_TOKEN;
+
+    /**
+     * The table <code>public.oauth_approvals</code>.
+     */
+    public static final OauthApprovals OAUTH_APPROVALS = com.cas.easycas.dao.tables.OauthApprovals.OAUTH_APPROVALS;
+
+    /**
+     * The table <code>public.oauth_client_details</code>.
+     */
+    public static final OauthClientDetails OAUTH_CLIENT_DETAILS = com.cas.easycas.dao.tables.OauthClientDetails.OAUTH_CLIENT_DETAILS;
+
+    /**
+     * The table <code>public.oauth_client_token</code>.
+     */
+    public static final OauthClientToken OAUTH_CLIENT_TOKEN = com.cas.easycas.dao.tables.OauthClientToken.OAUTH_CLIENT_TOKEN;
+
+    /**
+     * The table <code>public.oauth_code</code>.
+     */
+    public static final OauthCode OAUTH_CODE = com.cas.easycas.dao.tables.OauthCode.OAUTH_CODE;
+
+    /**
+     * The table <code>public.oauth_refresh_token</code>.
+     */
+    public static final OauthRefreshToken OAUTH_REFRESH_TOKEN = com.cas.easycas.dao.tables.OauthRefreshToken.OAUTH_REFRESH_TOKEN;
 
     /**
      * The table <code>public.otp_rule</code>.

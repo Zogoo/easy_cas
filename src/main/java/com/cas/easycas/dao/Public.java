@@ -8,12 +8,19 @@ import com.cas.easycas.dao.tables.AdRule;
 import com.cas.easycas.dao.tables.AuthChain;
 import com.cas.easycas.dao.tables.AuthInfo;
 import com.cas.easycas.dao.tables.ClientCertificateRule;
+import com.cas.easycas.dao.tables.Clientdetails;
 import com.cas.easycas.dao.tables.DeviseRule;
 import com.cas.easycas.dao.tables.DuoRule;
 import com.cas.easycas.dao.tables.FidoRule;
 import com.cas.easycas.dao.tables.FlywaySchemaHistory;
 import com.cas.easycas.dao.tables.IpRule;
 import com.cas.easycas.dao.tables.LoginIp;
+import com.cas.easycas.dao.tables.OauthAccessToken;
+import com.cas.easycas.dao.tables.OauthApprovals;
+import com.cas.easycas.dao.tables.OauthClientDetails;
+import com.cas.easycas.dao.tables.OauthClientToken;
+import com.cas.easycas.dao.tables.OauthCode;
+import com.cas.easycas.dao.tables.OauthRefreshToken;
 import com.cas.easycas.dao.tables.OtpRule;
 import com.cas.easycas.dao.tables.PasswordRule;
 import com.cas.easycas.dao.tables.RootCertificate;
@@ -45,7 +52,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = -184759444;
+    private static final long serialVersionUID = 1554419204;
 
     /**
      * The reference instance of <code>public</code>
@@ -71,6 +78,11 @@ public class Public extends SchemaImpl {
      * The table <code>public.client_certificate_rule</code>.
      */
     public final ClientCertificateRule CLIENT_CERTIFICATE_RULE = com.cas.easycas.dao.tables.ClientCertificateRule.CLIENT_CERTIFICATE_RULE;
+
+    /**
+     * The table <code>public.clientdetails</code>.
+     */
+    public final Clientdetails CLIENTDETAILS = com.cas.easycas.dao.tables.Clientdetails.CLIENTDETAILS;
 
     /**
      * The table <code>public.devise_rule</code>.
@@ -101,6 +113,36 @@ public class Public extends SchemaImpl {
      * The table <code>public.login_ip</code>.
      */
     public final LoginIp LOGIN_IP = com.cas.easycas.dao.tables.LoginIp.LOGIN_IP;
+
+    /**
+     * The table <code>public.oauth_access_token</code>.
+     */
+    public final OauthAccessToken OAUTH_ACCESS_TOKEN = com.cas.easycas.dao.tables.OauthAccessToken.OAUTH_ACCESS_TOKEN;
+
+    /**
+     * The table <code>public.oauth_approvals</code>.
+     */
+    public final OauthApprovals OAUTH_APPROVALS = com.cas.easycas.dao.tables.OauthApprovals.OAUTH_APPROVALS;
+
+    /**
+     * The table <code>public.oauth_client_details</code>.
+     */
+    public final OauthClientDetails OAUTH_CLIENT_DETAILS = com.cas.easycas.dao.tables.OauthClientDetails.OAUTH_CLIENT_DETAILS;
+
+    /**
+     * The table <code>public.oauth_client_token</code>.
+     */
+    public final OauthClientToken OAUTH_CLIENT_TOKEN = com.cas.easycas.dao.tables.OauthClientToken.OAUTH_CLIENT_TOKEN;
+
+    /**
+     * The table <code>public.oauth_code</code>.
+     */
+    public final OauthCode OAUTH_CODE = com.cas.easycas.dao.tables.OauthCode.OAUTH_CODE;
+
+    /**
+     * The table <code>public.oauth_refresh_token</code>.
+     */
+    public final OauthRefreshToken OAUTH_REFRESH_TOKEN = com.cas.easycas.dao.tables.OauthRefreshToken.OAUTH_REFRESH_TOKEN;
 
     /**
      * The table <code>public.otp_rule</code>.
@@ -181,12 +223,19 @@ public class Public extends SchemaImpl {
             AuthChain.AUTH_CHAIN,
             AuthInfo.AUTH_INFO,
             ClientCertificateRule.CLIENT_CERTIFICATE_RULE,
+            Clientdetails.CLIENTDETAILS,
             DeviseRule.DEVISE_RULE,
             DuoRule.DUO_RULE,
             FidoRule.FIDO_RULE,
             FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY,
             IpRule.IP_RULE,
             LoginIp.LOGIN_IP,
+            OauthAccessToken.OAUTH_ACCESS_TOKEN,
+            OauthApprovals.OAUTH_APPROVALS,
+            OauthClientDetails.OAUTH_CLIENT_DETAILS,
+            OauthClientToken.OAUTH_CLIENT_TOKEN,
+            OauthCode.OAUTH_CODE,
+            OauthRefreshToken.OAUTH_REFRESH_TOKEN,
             OtpRule.OTP_RULE,
             PasswordRule.PASSWORD_RULE,
             RootCertificate.ROOT_CERTIFICATE,
