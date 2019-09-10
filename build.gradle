@@ -80,7 +80,7 @@ jooq {
 			}
 			target {
 				packageName = 'com.cas.easycas.dao'
-				directory = 'src/main/java'
+				directory = 'src/main/generated/java'
 			}
 		}
 	}
