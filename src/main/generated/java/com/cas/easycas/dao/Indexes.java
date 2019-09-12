@@ -9,6 +9,7 @@ import com.cas.easycas.dao.tables.AuthChain;
 import com.cas.easycas.dao.tables.AuthInfo;
 import com.cas.easycas.dao.tables.ClientCertificateRule;
 import com.cas.easycas.dao.tables.Clientdetails;
+import com.cas.easycas.dao.tables.Companies;
 import com.cas.easycas.dao.tables.DeviseRule;
 import com.cas.easycas.dao.tables.DuoRule;
 import com.cas.easycas.dao.tables.FidoRule;
@@ -53,6 +54,7 @@ public class Indexes {
     public static final Index AUTH_INFO_PKEY = Indexes0.AUTH_INFO_PKEY;
     public static final Index CLIENT_CERTIFICATE_RULE_PKEY = Indexes0.CLIENT_CERTIFICATE_RULE_PKEY;
     public static final Index CLIENTDETAILS_PKEY = Indexes0.CLIENTDETAILS_PKEY;
+    public static final Index COMPANIES_PKEY = Indexes0.COMPANIES_PKEY;
     public static final Index DEVISE_RULE_PKEY = Indexes0.DEVISE_RULE_PKEY;
     public static final Index DUO_RULE_PKEY = Indexes0.DUO_RULE_PKEY;
     public static final Index FIDO_RULE_PKEY = Indexes0.FIDO_RULE_PKEY;
@@ -79,6 +81,7 @@ public class Indexes {
         public static Index AUTH_INFO_PKEY = Internal.createIndex("auth_info_pkey", AuthInfo.AUTH_INFO, new OrderField[] { AuthInfo.AUTH_INFO.ID }, true);
         public static Index CLIENT_CERTIFICATE_RULE_PKEY = Internal.createIndex("client_certificate_rule_pkey", ClientCertificateRule.CLIENT_CERTIFICATE_RULE, new OrderField[] { ClientCertificateRule.CLIENT_CERTIFICATE_RULE.ID }, true);
         public static Index CLIENTDETAILS_PKEY = Internal.createIndex("clientdetails_pkey", Clientdetails.CLIENTDETAILS, new OrderField[] { Clientdetails.CLIENTDETAILS.APPID }, true);
+        public static Index COMPANIES_PKEY = Internal.createIndex("companies_pkey", Companies.COMPANIES, new OrderField[] { Companies.COMPANIES.ID }, true);
         public static Index DEVISE_RULE_PKEY = Internal.createIndex("devise_rule_pkey", DeviseRule.DEVISE_RULE, new OrderField[] { DeviseRule.DEVISE_RULE.ID }, true);
         public static Index DUO_RULE_PKEY = Internal.createIndex("duo_rule_pkey", DuoRule.DUO_RULE, new OrderField[] { DuoRule.DUO_RULE.ID }, true);
         public static Index FIDO_RULE_PKEY = Internal.createIndex("fido_rule_pkey", FidoRule.FIDO_RULE, new OrderField[] { FidoRule.FIDO_RULE.ID }, true);

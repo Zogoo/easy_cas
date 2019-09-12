@@ -1,8 +1,13 @@
 -- User --
+CREATE TABLE companies (
+    id bigserial PRIMARY KEY,
+    name character varying
+);
+
 CREATE TABLE users (
     id bigserial PRIMARY KEY,
     user_name character varying,
-    company_id bigint NOT NULL,
+    company_id bigint NOT NULL REFERENCES companies(id),
     enabled boolean NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL

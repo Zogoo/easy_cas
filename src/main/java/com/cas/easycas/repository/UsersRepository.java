@@ -15,6 +15,7 @@ import static com.cas.easycas.dao.tables.Users.USERS;
 import static com.cas.easycas.dao.tables.Authorities.AUTHORITIES;
 import static com.cas.easycas.dao.tables.AuthChain.AUTH_CHAIN;
 import static com.cas.easycas.dao.tables.PasswordRule.PASSWORD_RULE;
+import static com.cas.easycas.dao.tables.Companies.COMPANIES;
 
 @Repository
 public class UsersRepository {
@@ -22,10 +23,12 @@ public class UsersRepository {
     DSLContext dslContext; //JOOQ context based on database datasource
 
     @Transactional(readOnly = true)
-    public Optional<Users> findByName(String userName) {
+    public Optional<Users> findByCompanyAndUserName(String companyName, String userName) {
         return dslContext.select()
                 .from(USERS)
-                .where(USERS.USER_NAME.equal(userName))
+                .join(COMPANIES)
+                .on(USERS.COMPANY_ID.eq(COMPANIES.ID))
+                .where(USERS.USER_NAME.equal(userName).and(COMPANIES.NAME.equal(companyName)))
                 .fetchOptionalInto(Users.class);
     }
 

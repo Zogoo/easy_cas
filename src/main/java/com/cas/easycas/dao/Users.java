@@ -5,8 +5,9 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Users {
+public class Users{
     String userName;
     String companyId;
     Boolean enabled;
+
 }

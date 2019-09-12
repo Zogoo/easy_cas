@@ -10,6 +10,7 @@ import com.cas.easycas.dao.tables.AuthInfo;
 import com.cas.easycas.dao.tables.Authorities;
 import com.cas.easycas.dao.tables.ClientCertificateRule;
 import com.cas.easycas.dao.tables.Clientdetails;
+import com.cas.easycas.dao.tables.Companies;
 import com.cas.easycas.dao.tables.DeviseRule;
 import com.cas.easycas.dao.tables.DuoRule;
 import com.cas.easycas.dao.tables.FidoRule;
@@ -73,6 +74,11 @@ public class Tables {
      * The table <code>public.clientdetails</code>.
      */
     public static final Clientdetails CLIENTDETAILS = com.cas.easycas.dao.tables.Clientdetails.CLIENTDETAILS;
+
+    /**
+     * The table <code>public.companies</code>.
+     */
+    public static final Companies COMPANIES = com.cas.easycas.dao.tables.Companies.COMPANIES;
 
     /**
      * The table <code>public.devise_rule</code>.

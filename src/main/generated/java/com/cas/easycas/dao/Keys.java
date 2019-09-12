@@ -10,6 +10,7 @@ import com.cas.easycas.dao.tables.AuthInfo;
 import com.cas.easycas.dao.tables.Authorities;
 import com.cas.easycas.dao.tables.ClientCertificateRule;
 import com.cas.easycas.dao.tables.Clientdetails;
+import com.cas.easycas.dao.tables.Companies;
 import com.cas.easycas.dao.tables.DeviseRule;
 import com.cas.easycas.dao.tables.DuoRule;
 import com.cas.easycas.dao.tables.FidoRule;
@@ -30,6 +31,7 @@ import com.cas.easycas.dao.tables.records.AuthInfoRecord;
 import com.cas.easycas.dao.tables.records.AuthoritiesRecord;
 import com.cas.easycas.dao.tables.records.ClientCertificateRuleRecord;
 import com.cas.easycas.dao.tables.records.ClientdetailsRecord;
+import com.cas.easycas.dao.tables.records.CompaniesRecord;
 import com.cas.easycas.dao.tables.records.DeviseRuleRecord;
 import com.cas.easycas.dao.tables.records.DuoRuleRecord;
 import com.cas.easycas.dao.tables.records.FidoRuleRecord;
@@ -75,6 +77,7 @@ public class Keys {
     public static final Identity<AuthChainRecord, Long> IDENTITY_AUTH_CHAIN = Identities0.IDENTITY_AUTH_CHAIN;
     public static final Identity<AuthInfoRecord, Long> IDENTITY_AUTH_INFO = Identities0.IDENTITY_AUTH_INFO;
     public static final Identity<ClientCertificateRuleRecord, Long> IDENTITY_CLIENT_CERTIFICATE_RULE = Identities0.IDENTITY_CLIENT_CERTIFICATE_RULE;
+    public static final Identity<CompaniesRecord, Long> IDENTITY_COMPANIES = Identities0.IDENTITY_COMPANIES;
     public static final Identity<DeviseRuleRecord, Long> IDENTITY_DEVISE_RULE = Identities0.IDENTITY_DEVISE_RULE;
     public static final Identity<DuoRuleRecord, Long> IDENTITY_DUO_RULE = Identities0.IDENTITY_DUO_RULE;
     public static final Identity<FidoRuleRecord, Long> IDENTITY_FIDO_RULE = Identities0.IDENTITY_FIDO_RULE;
@@ -95,6 +98,7 @@ public class Keys {
     public static final UniqueKey<AuthInfoRecord> AUTH_INFO_PKEY = UniqueKeys0.AUTH_INFO_PKEY;
     public static final UniqueKey<ClientCertificateRuleRecord> CLIENT_CERTIFICATE_RULE_PKEY = UniqueKeys0.CLIENT_CERTIFICATE_RULE_PKEY;
     public static final UniqueKey<ClientdetailsRecord> CLIENTDETAILS_PKEY = UniqueKeys0.CLIENTDETAILS_PKEY;
+    public static final UniqueKey<CompaniesRecord> COMPANIES_PKEY = UniqueKeys0.COMPANIES_PKEY;
     public static final UniqueKey<DeviseRuleRecord> DEVISE_RULE_PKEY = UniqueKeys0.DEVISE_RULE_PKEY;
     public static final UniqueKey<DuoRuleRecord> DUO_RULE_PKEY = UniqueKeys0.DUO_RULE_PKEY;
     public static final UniqueKey<FidoRuleRecord> FIDO_RULE_PKEY = UniqueKeys0.FIDO_RULE_PKEY;
@@ -128,6 +132,7 @@ public class Keys {
     public static final ForeignKey<PasswordRuleRecord, AuthChainRecord> PASSWORD_RULE__PASSWORD_RULE_CHAIN_ID_FKEY = ForeignKeys0.PASSWORD_RULE__PASSWORD_RULE_CHAIN_ID_FKEY;
     public static final ForeignKey<PasswordRuleRecord, AuthInfoRecord> PASSWORD_RULE__PASSWORD_RULE_AUTH_INFO_ID_FKEY = ForeignKeys0.PASSWORD_RULE__PASSWORD_RULE_AUTH_INFO_ID_FKEY;
     public static final ForeignKey<SamlRuleRecord, AuthChainRecord> SAML_RULE__SAML_RULE_CHAIN_ID_FKEY = ForeignKeys0.SAML_RULE__SAML_RULE_CHAIN_ID_FKEY;
+    public static final ForeignKey<UsersRecord, CompaniesRecord> USERS__USERS_COMPANY_ID_FKEY = ForeignKeys0.USERS__USERS_COMPANY_ID_FKEY;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -138,6 +143,7 @@ public class Keys {
         public static Identity<AuthChainRecord, Long> IDENTITY_AUTH_CHAIN = Internal.createIdentity(AuthChain.AUTH_CHAIN, AuthChain.AUTH_CHAIN.ID);
         public static Identity<AuthInfoRecord, Long> IDENTITY_AUTH_INFO = Internal.createIdentity(AuthInfo.AUTH_INFO, AuthInfo.AUTH_INFO.ID);
         public static Identity<ClientCertificateRuleRecord, Long> IDENTITY_CLIENT_CERTIFICATE_RULE = Internal.createIdentity(ClientCertificateRule.CLIENT_CERTIFICATE_RULE, ClientCertificateRule.CLIENT_CERTIFICATE_RULE.ID);
+        public static Identity<CompaniesRecord, Long> IDENTITY_COMPANIES = Internal.createIdentity(Companies.COMPANIES, Companies.COMPANIES.ID);
         public static Identity<DeviseRuleRecord, Long> IDENTITY_DEVISE_RULE = Internal.createIdentity(DeviseRule.DEVISE_RULE, DeviseRule.DEVISE_RULE.ID);
         public static Identity<DuoRuleRecord, Long> IDENTITY_DUO_RULE = Internal.createIdentity(DuoRule.DUO_RULE, DuoRule.DUO_RULE.ID);
         public static Identity<FidoRuleRecord, Long> IDENTITY_FIDO_RULE = Internal.createIdentity(FidoRule.FIDO_RULE, FidoRule.FIDO_RULE.ID);
@@ -156,6 +162,7 @@ public class Keys {
         public static final UniqueKey<AuthInfoRecord> AUTH_INFO_PKEY = Internal.createUniqueKey(AuthInfo.AUTH_INFO, "auth_info_pkey", AuthInfo.AUTH_INFO.ID);
         public static final UniqueKey<ClientCertificateRuleRecord> CLIENT_CERTIFICATE_RULE_PKEY = Internal.createUniqueKey(ClientCertificateRule.CLIENT_CERTIFICATE_RULE, "client_certificate_rule_pkey", ClientCertificateRule.CLIENT_CERTIFICATE_RULE.ID);
         public static final UniqueKey<ClientdetailsRecord> CLIENTDETAILS_PKEY = Internal.createUniqueKey(Clientdetails.CLIENTDETAILS, "clientdetails_pkey", Clientdetails.CLIENTDETAILS.APPID);
+        public static final UniqueKey<CompaniesRecord> COMPANIES_PKEY = Internal.createUniqueKey(Companies.COMPANIES, "companies_pkey", Companies.COMPANIES.ID);
         public static final UniqueKey<DeviseRuleRecord> DEVISE_RULE_PKEY = Internal.createUniqueKey(DeviseRule.DEVISE_RULE, "devise_rule_pkey", DeviseRule.DEVISE_RULE.ID);
         public static final UniqueKey<DuoRuleRecord> DUO_RULE_PKEY = Internal.createUniqueKey(DuoRule.DUO_RULE, "duo_rule_pkey", DuoRule.DUO_RULE.ID);
         public static final UniqueKey<FidoRuleRecord> FIDO_RULE_PKEY = Internal.createUniqueKey(FidoRule.FIDO_RULE, "fido_rule_pkey", FidoRule.FIDO_RULE.ID);
@@ -187,5 +194,6 @@ public class Keys {
         public static final ForeignKey<PasswordRuleRecord, AuthChainRecord> PASSWORD_RULE__PASSWORD_RULE_CHAIN_ID_FKEY = Internal.createForeignKey(com.cas.easycas.dao.Keys.AUTH_CHAIN_PKEY, PasswordRule.PASSWORD_RULE, "password_rule__password_rule_chain_id_fkey", PasswordRule.PASSWORD_RULE.CHAIN_ID);
         public static final ForeignKey<PasswordRuleRecord, AuthInfoRecord> PASSWORD_RULE__PASSWORD_RULE_AUTH_INFO_ID_FKEY = Internal.createForeignKey(com.cas.easycas.dao.Keys.AUTH_INFO_PKEY, PasswordRule.PASSWORD_RULE, "password_rule__password_rule_auth_info_id_fkey", PasswordRule.PASSWORD_RULE.AUTH_INFO_ID);
         public static final ForeignKey<SamlRuleRecord, AuthChainRecord> SAML_RULE__SAML_RULE_CHAIN_ID_FKEY = Internal.createForeignKey(com.cas.easycas.dao.Keys.AUTH_CHAIN_PKEY, SamlRule.SAML_RULE, "saml_rule__saml_rule_chain_id_fkey", SamlRule.SAML_RULE.CHAIN_ID);
+        public static final ForeignKey<UsersRecord, CompaniesRecord> USERS__USERS_COMPANY_ID_FKEY = Internal.createForeignKey(com.cas.easycas.dao.Keys.COMPANIES_PKEY, Users.USERS, "users__users_company_id_fkey", Users.USERS.COMPANY_ID);
     }
 }

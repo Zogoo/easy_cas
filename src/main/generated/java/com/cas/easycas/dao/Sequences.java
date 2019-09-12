@@ -44,6 +44,11 @@ public class Sequences {
     public static final Sequence<Long> CLIENT_CERTIFICATE_RULE_ID_SEQ = new SequenceImpl<Long>("client_certificate_rule_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
+     * The sequence <code>public.companies_id_seq</code>
+     */
+    public static final Sequence<Long> COMPANIES_ID_SEQ = new SequenceImpl<Long>("companies_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>public.devise_rule_id_seq</code>
      */
     public static final Sequence<Long> DEVISE_RULE_ID_SEQ = new SequenceImpl<Long>("devise_rule_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));

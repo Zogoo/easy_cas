@@ -10,6 +10,7 @@ import com.cas.easycas.dao.tables.AuthInfo;
 import com.cas.easycas.dao.tables.Authorities;
 import com.cas.easycas.dao.tables.ClientCertificateRule;
 import com.cas.easycas.dao.tables.Clientdetails;
+import com.cas.easycas.dao.tables.Companies;
 import com.cas.easycas.dao.tables.DeviseRule;
 import com.cas.easycas.dao.tables.DuoRule;
 import com.cas.easycas.dao.tables.FidoRule;
@@ -53,7 +54,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 1121288360;
+    private static final long serialVersionUID = 936913131;
 
     /**
      * The reference instance of <code>public</code>
@@ -89,6 +90,11 @@ public class Public extends SchemaImpl {
      * The table <code>public.clientdetails</code>.
      */
     public final Clientdetails CLIENTDETAILS = com.cas.easycas.dao.tables.Clientdetails.CLIENTDETAILS;
+
+    /**
+     * The table <code>public.companies</code>.
+     */
+    public final Companies COMPANIES = com.cas.easycas.dao.tables.Companies.COMPANIES;
 
     /**
      * The table <code>public.devise_rule</code>.
@@ -204,6 +210,7 @@ public class Public extends SchemaImpl {
             Sequences.AUTH_CHAIN_ID_SEQ,
             Sequences.AUTH_INFO_ID_SEQ,
             Sequences.CLIENT_CERTIFICATE_RULE_ID_SEQ,
+            Sequences.COMPANIES_ID_SEQ,
             Sequences.DEVISE_RULE_ID_SEQ,
             Sequences.DUO_RULE_ID_SEQ,
             Sequences.FIDO_RULE_ID_SEQ,
@@ -231,6 +238,7 @@ public class Public extends SchemaImpl {
             Authorities.AUTHORITIES,
             ClientCertificateRule.CLIENT_CERTIFICATE_RULE,
             Clientdetails.CLIENTDETAILS,
+            Companies.COMPANIES,
             DeviseRule.DEVISE_RULE,
             DuoRule.DUO_RULE,
             FidoRule.FIDO_RULE,

@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.1.7.RELEASE'
 	id 'java'
+	id 'idea'
 	id 'org.flywaydb.flyway' version '6.0.1'
 	id 'nu.studer.jooq' version '3.0.3'
 }
@@ -35,7 +36,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jooq'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.2'
 	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.9'
-	implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+//	implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+	testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+	annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+	testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.6'
 	runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.2.6'
 	jooqRuntime group: 'org.postgresql', name: 'postgresql', version: '42.2.6'
