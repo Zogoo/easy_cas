@@ -1,6 +1,8 @@
 package com.cas.easycas.config.filter;
 
 import com.cas.easycas.config.CasAuthenticationToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -15,6 +17,12 @@ import java.util.Optional;
 public class CasAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     public static final String COMPANY_NAME_KEY = "company";
+
+    @Override
+    @Autowired
+    public void setAuthenticationManager(AuthenticationManager authenticationManager) {
+        super.setAuthenticationManager(authenticationManager);
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
