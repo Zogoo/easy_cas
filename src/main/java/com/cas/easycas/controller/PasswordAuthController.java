@@ -18,4 +18,11 @@ public class PasswordAuthController {
         modelAndView.setViewName("password");
         return modelAndView;
     }
+
+    @RequestMapping(value = "/password", method = RequestMethod.POST)
+    public ModelAndView validatePassword() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("password");
+        return modelAndView;
+    }
 }

@@ -38,12 +38,9 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .csrf().disable()
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginProcessingUrl("/password");
+                .authorizeRequests().antMatchers("/password").permitAll()
+                .and().formLogin().loginProcessingUrl("/password").loginPage("/password").successForwardUrl("/home")
+                .and().authorizeRequests().anyRequest().authenticated();
     }
 
     public AuthenticationProvider authProvider() {
