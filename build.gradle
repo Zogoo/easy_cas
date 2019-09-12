@@ -95,5 +95,9 @@ jar {
 	archiveName = 'cas.jar'
 }
 
- generateTablesJooqSchemaSource.dependsOn flywayMigrate
- test.dependsOn flywayClean
+bootRun {
+	systemProperties = System.properties
+}
+
+generateTablesJooqSchemaSource.dependsOn flywayMigrate
+test.dependsOn flywayClean

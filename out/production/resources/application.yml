@@ -1,0 +1,25 @@
+## Server Properties
+server:
+  port: 8086
+
+spring:
+  profiles.active: development
+  ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/cas
+    username: postgres
+    password: admin
+  ## Jackson Properties
+  jackson:
+    serialization.WRITE_DATES_AS_TIMESTAMPS: false
+    time-zone: UTC
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation=true:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect

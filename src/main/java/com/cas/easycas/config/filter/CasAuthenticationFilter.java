@@ -16,7 +16,7 @@ import java.util.Optional;
 @Component
 public class CasAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    public static final String COMPANY_NAME_KEY = "company";
+    public static final String COMPANY_NAME_KEY = "companyName";
 
     @Override
     @Autowired
