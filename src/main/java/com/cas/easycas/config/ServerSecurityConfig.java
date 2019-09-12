@@ -24,6 +24,9 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordAuthenticationService passwordAuthenticationProvider;
 
+    @Autowired
+    private PasswordAuthenticationEntryPoint passwordAuthenticationEntryPoint;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(passwordAuthenticationProvider);
@@ -37,8 +40,12 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/password").permitAll()
-                .anyRequest().authenticated();
+        http.csrf().disable()
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginProcessingUrl("/password");
     }
 
     @Bean
