@@ -57,7 +57,7 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public SimpleUrlAuthenticationFailureHandler authFailureHandler() {
-        return new SimpleUrlAuthenticationFailureHandler("/login?error=true");
+        return new SimpleUrlAuthenticationFailureHandler("/password?error=true");
     }
 
     @Bean

@@ -59,9 +59,10 @@ public class PasswordAuthenticationService extends AbstractUserDetailsAuthentica
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String name = authentication.getName();
-        String password = authentication.getCredentials().toString();
-        String companyName = request.getParameter(CasAuthenticationFilter.COMPANY_NAME_KEY);
+        CasAuthenticationToken authenticationToken = (CasAuthenticationToken) authentication;
+        String name = authenticationToken.getName();
+        String password = authenticationToken.getCredentials().toString();
+        String companyName = authenticationToken.getCompanyName();
 
         return new CasAuthenticationToken(companyName, name, password);
     }
